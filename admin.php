@@ -3,6 +3,13 @@ session_start();
 # If the admin is logged in
 if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
     // Admin is logged in, display the admin page
+
+    # Database connection file
+    include "db_conn.php";
+
+    # Book helper function
+    include "php/func-book.php";
+    $books = get_all_books($conn);
     ?>
 
     <!DOCTYPE html>
@@ -52,6 +59,41 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                     </div>
                 </div>
             </nav>
+
+            <?php if ($books == 0) { ?>
+                <div class="alert alert-warning mt-4" role="alert">
+                    No books found in the database.
+                </div>
+            <?php } else { ?>
+                <h4 class="mt-4">All Books</h4>
+                <table class="table table-bordered shadow">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($books as $index => $book) { ?>
+                            <tr>
+                                <td><?= $index + 1 ?></td>
+                                <td><?= htmlspecialchars($book['title']) ?></td>
+                                <td><?= htmlspecialchars($book['author_id']) ?></td>
+                                <td><?= htmlspecialchars($book['description']) ?></td>
+                                <td><?= htmlspecialchars($book['category_id']) ?></td>
+                                <td>
+                                    <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-warning">Edit</a>
+                                    <a href="delete.php?id=<?= $book['id'] ?>" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?php } ?>
         </div>
     </body>
 

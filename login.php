@@ -18,17 +18,17 @@
 <body>
     <div class="d-flex justify-content-center align-items-center"
     style="min-height:100vh;">
-        <form class="p-5 rounded shadow"style="max-width:30rem; width:100%">
+        <form class="p-5 rounded shadow"style="max-width:30rem; width:100%" method="POST" action="php/auth.php">
             <h1 class="text-center display-4 pb-5">LOGIN</h1>
            
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
                 
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1">
             </div>
             
             <button type="submit" class="btn btn-primary">Login</button>

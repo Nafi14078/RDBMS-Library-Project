@@ -10,23 +10,23 @@ if (
    # Database Connection File
    include "../db_conn.php";
    /**
-    * check if author name is submitted
+    * check if category name is submitted
     */
-   if (isset($_POST['author_name'])) {
+   if (isset($_POST['category_name'])) {
       /**
        * Get data from POST request and store it in var
        */
-      $name = $_POST['author_name'];
+      $name = $_POST['category_name'];
       #simple form Validation
       if (empty($name)) {
-         $em = "The author name is required";
-         header("Location: ../add-author.php?error=$em");
+         $em = "The category name is required";
+         header("Location: ../add-category.php?error=$em");
          exit;
 
 
       } else {
          # insert into database
-         $sql = "INSERT INTO authors (name)
+         $sql = "INSERT INTO categories (name)
       VALUES(?)";
          $stmt = $conn->prepare($sql);
          $res = $stmt->execute([$name]);
@@ -37,13 +37,13 @@ if (
          if ($res) {
             #success message
             $sm = "Successfully created!";
-            header("Location: ../add-author.php?success=$sm");
+            header("Location: ../add-category.php?success=$sm");
             exit;
 
          } else {
             #error message
             $em = "Unknown Error Occurred!";
-            header("Location: ../add-author.php?error=$em");
+            header("Location: ../add-category.php?error=$em");
             exit;
          }
       }

@@ -16,7 +16,7 @@ if (
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Add Author</title>
+		<title>Add Category</title>
 
 		<!-- bootstrap 5 CDN-->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -48,10 +48,10 @@ if (
 								<a class="nav-link" href="add-book.php">Add Book</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="add-category.php">Add Category</a>
+								<a class="nav-link active" href="add-category.php">Add Category</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" href="add-author.php">Add Author</a>
+								<a class="nav-link" href="add-author.php">Add Author</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="logout.php">Logout</a>
@@ -60,10 +60,10 @@ if (
 					</div>
 				</div>
 			</nav>
-			<form action="php/add-author.php" method="POST" class="shadow p-4 rounded mt-5"
+			<form action="php/add-category.php" method="POST" class="shadow p-4 rounded mt-5"
 				style="width:90%;max-width:50rem;">
 				<h1 class="text-center pb-5 display-4 fs-3">
-					Add New Author
+					Add New Category
 				</h1>
 				<?php
 				if (isset($_GET["error"])) { ?>
@@ -82,10 +82,10 @@ if (
 				}
 				?>
 				<div class="mb-3">
-					<label class="form-label">Author Name</label>
-					<input type="text" class="form-control" name="author_name">
+					<label class="form-label">Category Name</label>
+					<input type="text" class="form-control" name="category_name">
 				</div>
-				<button type="submit" class="btn btn-primary">Add Author</button>
+				<button type="submit" class="btn btn-primary">Add Category</button>
 
 			</form>
 		</div>

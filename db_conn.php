@@ -1,7 +1,7 @@
 <?php
 
 # server name
-$sName="localhost";
+$sName="127.0.0.1";
 
 #user name
 $uName= "root";
@@ -22,3 +22,6 @@ try{
 catch(PDOException $e){
     echo "Connection failed:".$e->getMessage();
 }
+
+
+

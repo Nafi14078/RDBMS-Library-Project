@@ -22,7 +22,7 @@ if (
 	include "php/func-category.php";
 	$categories = get_all_categories($conn);
 
-	?>
+?>
 
 
 	<!DOCTYPE html>
@@ -44,37 +44,53 @@ if (
 
 	</head>
 
-	<body>
+	<body class="bg-success p-2 text-dark bg-opacity-10">
 		<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<nav class="navbar navbar-expand-lg" style="background: linear-gradient(90deg, #667eea, #764ba2); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="admin.php">Admin</a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
+					<a class="navbar-brand text-white fw-bold" href="admin.php" style="font-size: 1.5rem; letter-spacing: 1px;">
+						<i class="fas fa-shield-alt"></i> Admin Panel
+					</a>
+					<button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation" style="border-color: #fff;">
+						<span class="navbar-toggler-icon" style="color: #fff;"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="index.php">Store</a>
+								<a class="nav-link text-white" href="index.php" style="font-size: 1rem; font-weight: 500;">
+									<i class="fas fa-store"></i> Store
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="add-book.php">Add Book</a>
+								<a class="nav-link text-white" href="add-book.php" style="font-size: 1rem; font-weight: 500;">
+									<i class="fas fa-book"></i> Add Book
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="add-category.php">Add Category</a>
+								<a class="nav-link text-white" href="add-category.php" style="font-size: 1rem; font-weight: 500;">
+									<i class="fas fa-list"></i> Add Category
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="add-author.php">Add Author</a>
+								<a class="nav-link text-white" href="add-author.php" style="font-size: 1rem; font-weight: 500;">
+									<i class="fas fa-user-edit"></i> Add Author
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="logout.php">Logout</a>
+								<a class="nav-link text-white" href="logout.php" style="font-size: 1rem; font-weight: 500;">
+									<i class="fas fa-sign-out-alt"></i> Logout
+								</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
+
+
 			<form action="search.php" method="get" style="width: 100%; max-width: 30rem">
 
 				<div class="input-group my-5">
@@ -113,7 +129,7 @@ if (
 
 				<!-- List of all books -->
 				<h4>All Books</h4>
-				<table class="table table-bordered shadow">
+				<table class="table table-bordered shadow table-success">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -129,7 +145,7 @@ if (
 						$i = 0;
 						foreach ($books as $book) {
 							$i++;
-							?>
+						?>
 							<tr>
 								<td><?= $i ?></td>
 								<td>
@@ -171,7 +187,8 @@ if (
 									?>
 								</td>
 								<td>
-									<a href="edit-book.php?id=<?= $book['id'] ?>" class="btn btn-warning">
+									<a href="edit-book.php?id=<?= $book['id'] ?>"
+										class="btn btn-warning">
 										Edit</a>
 
 									<a href="php/delete-book.php?id=<?= $book['id'] ?>" class="btn btn-danger">
@@ -193,7 +210,7 @@ if (
 			<?php } else { ?>
 				<!-- List of all categories -->
 				<h4 class="mt-5">All Categories</h4>
-				<table class="table table-bordered shadow">
+				<table class="table table-bordered shadow table-success">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -206,12 +223,13 @@ if (
 						$j = 0;
 						foreach ($categories as $category) {
 							$j++;
-							?>
+						?>
 							<tr>
 								<td><?= $j ?></td>
 								<td><?= $category['name'] ?></td>
 								<td>
-									<a href="edit-category.php?id=<?= $category['id'] ?>" class="btn btn-warning">
+									<a href="edit-category.php?id=<?= $category['id'] ?>"
+										class="btn btn-warning">
 										Edit</a>
 
 									<a href="php/delete-category.php?id=<?= $category['id'] ?>" class="btn btn-danger">
@@ -233,7 +251,7 @@ if (
 			<?php } else { ?>
 				<!-- List of all Authors -->
 				<h4 class="mt-5">All Authors</h4>
-				<table class="table table-bordered shadow">
+				<table class="table table-bordered shadow table-success">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -246,12 +264,13 @@ if (
 						$k = 0;
 						foreach ($authors as $author) {
 							$k++;
-							?>
+						?>
 							<tr>
 								<td><?= $k ?></td>
 								<td><?= $author['name'] ?></td>
 								<td>
-									<a href="edit-author.php?id=<?= $author['id'] ?>" class="btn btn-warning">
+									<a href="edit-author.php?id=<?= $author['id'] ?>"
+										class="btn btn-warning">
 										Edit</a>
 
 									<a href="php/delete-author.php?id=<?= $author['id'] ?>" class="btn btn-danger">

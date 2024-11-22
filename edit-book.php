@@ -6,8 +6,26 @@ if (
     isset($_SESSION['user_id']) &&
     isset($_SESSION['user_email'])
 ) {
+    # if the author is not set
+    if(!isset($_GET['id'])){
+        header("Location: admin.php");
+        exit;
+    }
+
+    $id = $_GET['id']; 
+
     # Database Connection File
     include "db_conn.php";
+
+    # Book helper function
+    include "php/func-book.php";
+    $book = get_book($conn, $id);
+    
+    # if the ID is invalid
+    if($book == 0){
+        header("Location: admin.php");
+        exit;
+    }
 
     # Category helper function
     include "php/func-category.php";
@@ -45,7 +63,7 @@ if (
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Book</title>
+        <title>Edit Book</title>
 
         <!-- bootstrap 5 CDN-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -74,10 +92,14 @@ if (
                                 <a class="nav-link" aria-current="page" href="index.php">Store</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="add-book.php">Add Book</a>
+                                <a class="nav-link" 
+                                   href="add-book.php">
+                                   Add Book</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="add-category.php">Add Category</a>
+                                <a class="nav-link" 
+                                   href="add-category.php">
+                                   Add Category</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="add-author.php">Add Author</a>
@@ -89,13 +111,13 @@ if (
                     </div>
                 </div>
             </nav>
-            <form action="php/add-book.php" 
+            <form action="php/edit-book.php" 
             method="POST"
             enctype="multipart/form-data"
              class="shadow p-4 rounded mt-5"
                 style="width:90%;max-width:50rem;">
                 <h1 class="text-center pb-5 display-4 fs-3">
-                    Add New Book
+                    Edit Book
                 </h1>
                 <?php
                 if (isset($_GET["error"])) { ?>
@@ -116,15 +138,19 @@ if (
                 <div class="mb-3">
                     <label class="form-label">Book Title</label>
                     <input type="text" 
+                           hidden
+                           value = "<?=$book['id']?>"
+                           name="book_id">
+                    <input type="text" 
                            class="form-control" 
-                           value = "<?=$title?>"
+                           value = "<?=$book['title']?>"
                            name="book_title">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Book Description</label>
                     <input type="text" 
                            class="form-control" 
-                           value = "<?=$desc?>"
+                           value = "<?=$book['description']?>"
                            name="book_description">
                 </div>
                 <div class="mb-3">
@@ -144,7 +170,7 @@ if (
 
 
                             foreach ($authors as $author) { 
-                                if($author_id == $author['id']){
+                                if($book['author_id'] == $author['id']){
 
                                 
                                     ?>
@@ -180,7 +206,7 @@ if (
 
 
                             foreach ($categories as $category) { 
-                                if($category_id == $category['id']){
+                                if($book['category_id'] == $category['id']){
 
                                 
                                     ?>
@@ -201,13 +227,35 @@ if (
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Book Cover</label>
-                    <input type="file" class="form-control" name="book_cover">
+                    <input type="file" 
+                           class="form-control" 
+                           name="book_cover">
+
+                    <input type="text" 
+                           hidden
+                           value = "<?=$book['cover']?>"
+                           name="current_cover">       
+                           <a href="uploads/cover/<?=$book['cover']?>" 
+                              class="btn btn-outline-dark btn-sm" 
+                              target="_blank">
+                              View Current Cover
+                           </a>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">File</label>
                     <input type="file" class="form-control" name="file">
+
+                    <input type="text" 
+                           hidden
+                           value = "<?=$book['file']?>"
+                           name="current_file">
+                    <a href="uploads/file/<?=$book['file']?>" 
+                              class="btn btn-outline-dark btn-sm" 
+                              target="_blank">
+                              View Current File
+                           </a>
                 </div>
-                <button type="submit" class="btn btn-primary">Add book</button>
+                <button type="submit" class="btn btn-primary">Update</button>
 
             </form>
         </div>

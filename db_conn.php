@@ -1,27 +1,22 @@
 <?php
 
 # server name
-$sName="127.0.0.1";
+$sName = "127.0.0.1";
 
 #user name
-$uName= "root";
+$uName = "root";
 
 #paaword
-$pass="";
+$pass = "";
 
 #database name
-$db_name= "online_book_store_db";
+$db_name = "online_book_store_db";
 
 #creating database connection using PHP objects(pdo)
 
-try{
-    $conn=new PDO("mysql:host=$sName;dbname=$db_name",$uName,$pass);
+try {
+    $conn = new PDO("mysql:host=$sName;dbname=$db_name", $uName, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+} catch (PDOException $e) {
+    echo "Connection failed:" . $e->getMessage();
 }
-catch(PDOException $e){
-    echo "Connection failed:".$e->getMessage();
-}
-
-
-

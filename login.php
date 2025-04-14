@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body class="bg-success p-2 text-dark bg-opacity-10">
     <div class="d-flex justify-content-center align-items-center" style="min-height:100vh;">
         <form class="p-5 rounded shadow" style="max-width:30rem; width:100%" method="POST" action="php/auth.php">
 

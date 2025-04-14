@@ -24,7 +24,6 @@ if (
 
 ?>
 
-
 	<!DOCTYPE html>
 	<html lang="en">
 
@@ -34,72 +33,66 @@ if (
 		<title>ADMIN</title>
 
 		<!-- bootstrap 5 CDN-->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 		<!-- bootstrap 5 Js bundle CDN-->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 	</head>
 
-	<body class="bg-success p-2 text-dark bg-opacity-10">
+	<body>
 		<div class="container">
-			<nav class="navbar navbar-expand-lg" style="background: linear-gradient(90deg, #667eea, #764ba2); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-					<a class="navbar-brand text-white fw-bold" href="admin.php" style="font-size: 1.5rem; letter-spacing: 1px;">
-						<i class="fas fa-shield-alt"></i> Admin Panel
-					</a>
-					<button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
-						data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent"
-						aria-expanded="false"
-						aria-label="Toggle navigation" style="border-color: #fff;">
-						<span class="navbar-toggler-icon" style="color: #fff;"></span>
+					<a class="navbar-brand" href="admin.php">Admin</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="collapse navbar-collapse"
+						id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link text-white" href="index.php" style="font-size: 1rem; font-weight: 500;">
-									<i class="fas fa-store"></i> Store
-								</a>
+								<a class="nav-link"
+									aria-current="page"
+									href="index.php">Store</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white" href="add-book.php" style="font-size: 1rem; font-weight: 500;">
-									<i class="fas fa-book"></i> Add Book
-								</a>
+								<a class="nav-link"
+									href="add-book.php">Add Book</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white" href="add-category.php" style="font-size: 1rem; font-weight: 500;">
-									<i class="fas fa-list"></i> Add Category
-								</a>
+								<a class="nav-link"
+									href="add-category.php">Add Category</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white" href="add-author.php" style="font-size: 1rem; font-weight: 500;">
-									<i class="fas fa-user-edit"></i> Add Author
-								</a>
+								<a class="nav-link"
+									href="add-author.php">Add Author</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white" href="logout.php" style="font-size: 1rem; font-weight: 500;">
-									<i class="fas fa-sign-out-alt"></i> Logout
-								</a>
+								<a class="nav-link"
+									href="logout.php">Logout</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
-
-
-			<form action="search.php" method="get" style="width: 100%; max-width: 30rem">
+			<form action="search.php"
+				method="get"
+				style="width: 100%; max-width: 30rem">
 
 				<div class="input-group my-5">
-					<input type="text" class="form-control" name="key" placeholder="Search Book..."
-						aria-label="Search Book..." aria-describedby="basic-addon2">
+					<input type="text"
+						class="form-control"
+						name="key"
+						placeholder="Search Book..."
+						aria-label="Search Book..."
+						aria-describedby="basic-addon2">
 
 					<button class="input-group-text
-						 btn btn-primary" id="basic-addon2">
-						<img src="img/search.png" width="20">
+		                 btn btn-primary"
+						id="basic-addon2">
+						<img src="img/search.png"
+							width="20">
 
 					</button>
 				</div>
@@ -119,8 +112,10 @@ if (
 
 			<?php if ($books == 0) { ?>
 				<div class="alert alert-warning 
-						text-center p-5" role="alert">
-					<img src="img/empty.png" width="100">
+        	            text-center p-5"
+					role="alert">
+					<img src="img/empty.png"
+						width="100">
 					<br>
 					There is no book in the database
 				</div>
@@ -129,7 +124,7 @@ if (
 
 				<!-- List of all books -->
 				<h4>All Books</h4>
-				<table class="table table-bordered shadow table-success">
+				<table class="table table-bordered shadow">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -149,12 +144,12 @@ if (
 							<tr>
 								<td><?= $i ?></td>
 								<td>
-									<img width="100" src="uploads/cover/<?= $book['cover'] ?>">
+									<img width="100"
+										src="uploads/cover/<?= $book['cover'] ?>">
 									<a class="link-dark d-block
-							   text-center" href="uploads/files/<?= $book['file'] ?>">
+					           text-center"
+										href="uploads/files/<?= $book['file'] ?>">
 										<?= $book['title'] ?>
-
-
 									</a>
 
 								</td>
@@ -191,7 +186,8 @@ if (
 										class="btn btn-warning">
 										Edit</a>
 
-									<a href="php/delete-book.php?id=<?= $book['id'] ?>" class="btn btn-danger">
+									<a href="php/delete-book.php?id=<?= $book['id'] ?>"
+										class="btn btn-danger">
 										Delete</a>
 								</td>
 							</tr>
@@ -202,15 +198,17 @@ if (
 
 			<?php if ($categories == 0) { ?>
 				<div class="alert alert-warning 
-						text-center p-5" role="alert">
-					<img src="img/empty.png" width="100">
+        	            text-center p-5"
+					role="alert">
+					<img src="img/empty.png"
+						width="100">
 					<br>
 					There is no category in the database
 				</div>
 			<?php } else { ?>
 				<!-- List of all categories -->
 				<h4 class="mt-5">All Categories</h4>
-				<table class="table table-bordered shadow table-success">
+				<table class="table table-bordered shadow">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -232,7 +230,8 @@ if (
 										class="btn btn-warning">
 										Edit</a>
 
-									<a href="php/delete-category.php?id=<?= $category['id'] ?>" class="btn btn-danger">
+									<a href="php/delete-category.php?id=<?= $category['id'] ?>"
+										class="btn btn-danger">
 										Delete</a>
 								</td>
 							</tr>
@@ -243,15 +242,17 @@ if (
 
 			<?php if ($authors == 0) { ?>
 				<div class="alert alert-warning 
-						text-center p-5" role="alert">
-					<img src="img/empty.png" width="100">
+        	            text-center p-5"
+					role="alert">
+					<img src="img/empty.png"
+						width="100">
 					<br>
 					There is no author in the database
 				</div>
 			<?php } else { ?>
 				<!-- List of all Authors -->
 				<h4 class="mt-5">All Authors</h4>
-				<table class="table table-bordered shadow table-success">
+				<table class="table table-bordered shadow">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -273,7 +274,8 @@ if (
 										class="btn btn-warning">
 										Edit</a>
 
-									<a href="php/delete-author.php?id=<?= $author['id'] ?>" class="btn btn-danger">
+									<a href="php/delete-author.php?id=<?= $author['id'] ?>"
+										class="btn btn-danger">
 										Delete</a>
 								</td>
 							</tr>
